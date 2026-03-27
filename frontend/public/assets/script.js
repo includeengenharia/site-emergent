@@ -347,42 +347,21 @@ function animateProjects() {
   });
 
   const scrollEl = document.getElementById('projects-scroll');
-  if (!scrollEl || window.innerWidth <= 768) return;
+  if (!scrollEl) return;
 
   const cards = scrollEl.querySelectorAll('.project-card');
   if (!cards.length) return;
 
-  const setEdgeGutters = () => {
-    const first = cards[0];
-    const last = cards[cards.length - 1];
-    const viewport = document.documentElement.clientWidth;
-    const safety = Math.max(20, viewport * 0.03);
-    const startPad = Math.max(24, (viewport - first.offsetWidth) / 2 + safety);
-    const endPad = Math.max(24, (viewport - last.offsetWidth) / 2 + safety);
-    scrollEl.style.paddingLeft = `${startPad}px`;
-    scrollEl.style.paddingRight = `${endPad}px`;
-  };
-
-  const getScrollDist = () => {
-    const viewport = document.documentElement.clientWidth;
-    return Math.max(0, scrollEl.scrollWidth - viewport);
-  };
-
-  setEdgeGutters();
-  gsap.set(scrollEl, { x: 0 });
-
-  gsap.to(scrollEl, {
-    x: () => -getScrollDist(),
-    ease: 'none',
+  gsap.from(cards, {
+    y: 40,
+    opacity: 0,
+    duration: 0.7,
+    stagger: 0.12,
+    ease: 'power3.out',
     scrollTrigger: {
       trigger: '#projects',
-      start: 'top+=30 top',
-      end: () => `+=${getScrollDist()}`,
-      pin: true,
-      scrub: 1,
-      anticipatePin: 1,
-      invalidateOnRefresh: true,
-      onRefresh: setEdgeGutters
+      start: 'top 75%',
+      once: true
     }
   });
 }
@@ -711,26 +690,60 @@ function handleNewsletter(e) {
 /* ============================================================
    10b. CONTACT FORM
    ============================================================ */
-function handleContactForm(e) {
+async function handleContactForm(e) {
   e.preventDefault();
   const form    = document.getElementById('contact-form');
   const success = document.getElementById('contact-success');
   const btn     = e.target.querySelector('[data-testid="contact-submit"]');
+  const btnText = btn?.querySelector('span');
+
+  const payload = {
+    nome: document.getElementById('contact-name')?.value?.trim() || '',
+    nome_da_empresa: document.getElementById('contact-company')?.value?.trim() || '',
+    telefone: document.getElementById('contact-phone')?.value?.trim() || '',
+    o_que_voc_busca: document.getElementById('contact-message')?.value?.trim() || ''
+  };
+
+  if (!payload.nome || !payload.nome_da_empresa || !payload.telefone || !payload.o_que_voc_busca) {
+    alert('Preencha todos os campos obrigatórios.');
+    return;
+  }
+
+  const contactApiUrl =
+    (window.CONTACT_API_URL && String(window.CONTACT_API_URL).trim()) ||
+    ((window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+      ? 'http://localhost:8000/api/contact'
+      : '/api/contact');
 
   if (btn) {
     btn.disabled = true;
-    const span = btn.querySelector('span');
-    if (span) span.textContent = 'Enviando...';
+    if (btnText) btnText.textContent = 'Enviando...';
   }
 
-  // Simulate sending
-  setTimeout(() => {
+  try {
+    const response = await fetch(contactApiUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+
+    if (!response.ok) {
+      throw new Error('Falha ao enviar contato');
+    }
+
     if (form)    form.style.display    = 'none';
     if (success) success.classList.add('visible');
     if (typeof gsap !== 'undefined') {
       gsap.from(success, { opacity: 0, y: 20, duration: 0.5, ease: 'power3.out' });
     }
-  }, 900);
+  } catch (error) {
+    console.error('Erro ao enviar formulário:', error);
+    alert('Não foi possível enviar agora. Tente novamente em instantes.');
+    if (btn) {
+      btn.disabled = false;
+      if (btnText) btnText.textContent = 'Enviar Mensagem';
+    }
+  }
 }
 
 
