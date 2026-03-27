@@ -193,7 +193,13 @@ function initMainAnimations() {
   // Init Three.js
   initThreeJS();
 
-  if (typeof gsap === 'undefined') return;
+  if (typeof gsap === 'undefined') {
+    const heroContent = document.querySelector('.hero-content');
+    if (heroContent) heroContent.style.opacity = '1';
+    return;
+  }
+
+  gsap.set('.hero-content', { opacity: 1 });
 
   // Register ScrollTrigger
   if (typeof ScrollTrigger !== 'undefined') {
@@ -343,19 +349,40 @@ function animateProjects() {
   const scrollEl = document.getElementById('projects-scroll');
   if (!scrollEl || window.innerWidth <= 768) return;
 
-  const getScrollDist = () => scrollEl.scrollWidth - window.innerWidth + 60;
+  const cards = scrollEl.querySelectorAll('.project-card');
+  if (!cards.length) return;
+
+  const setEdgeGutters = () => {
+    const first = cards[0];
+    const last = cards[cards.length - 1];
+    const viewport = document.documentElement.clientWidth;
+    const safety = Math.max(20, viewport * 0.03);
+    const startPad = Math.max(24, (viewport - first.offsetWidth) / 2 + safety);
+    const endPad = Math.max(24, (viewport - last.offsetWidth) / 2 + safety);
+    scrollEl.style.paddingLeft = `${startPad}px`;
+    scrollEl.style.paddingRight = `${endPad}px`;
+  };
+
+  const getScrollDist = () => {
+    const viewport = document.documentElement.clientWidth;
+    return Math.max(0, scrollEl.scrollWidth - viewport);
+  };
+
+  setEdgeGutters();
+  gsap.set(scrollEl, { x: 0 });
 
   gsap.to(scrollEl, {
     x: () => -getScrollDist(),
     ease: 'none',
     scrollTrigger: {
       trigger: '#projects',
-      start: 'top top',
+      start: 'top+=30 top',
       end: () => `+=${getScrollDist()}`,
       pin: true,
       scrub: 1,
       anticipatePin: 1,
-      invalidateOnRefresh: true
+      invalidateOnRefresh: true,
+      onRefresh: setEdgeGutters
     }
   });
 }
@@ -493,19 +520,23 @@ function initHeaderScroll() {
   const cat      = document.getElementById('lightbox-cat');
   const desc     = document.getElementById('lightbox-desc');
   const tech     = document.getElementById('lightbox-tech');
+  const cta      = document.querySelector('[data-testid="lightbox-cta"]');
 
   if (!lightbox) return;
 
   const cards = document.querySelectorAll('.project-card');
   cards.forEach(card => {
     const btn = card.querySelector('.project-btn');
-    if (btn) {
+    if (btn && btn.tagName === 'BUTTON') {
       btn.addEventListener('click', (e) => {
         e.stopPropagation();
         openLightbox(card);
       });
     }
-    card.addEventListener('click', () => openLightbox(card));
+    card.addEventListener('click', (e) => {
+      if (e.target.closest('.project-btn-link')) return;
+      openLightbox(card);
+    });
   });
 
   function openLightbox(card) {
@@ -540,6 +571,19 @@ function initHeaderScroll() {
 
   if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
   if (overlay)  overlay.addEventListener('click',  closeLightbox);
+  if (cta) {
+    cta.addEventListener('click', (e) => {
+      e.preventDefault();
+      closeLightbox();
+      const contact = document.getElementById('contact');
+      if (!contact) return;
+      setTimeout(() => {
+        const offset = document.getElementById('header')?.offsetHeight || 72;
+        const top = contact.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }, 120);
+    });
+  }
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 })();
 
@@ -762,6 +806,21 @@ function initBackToTop() {
       e.preventDefault();
       const offset = document.getElementById('header')?.offsetHeight || 72;
       const top    = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    });
+  });
+})();
+
+/* ---- Service CTA: always focus the contact form ---- */
+(function initServiceLinksToForm() {
+  const form = document.getElementById('contact-form');
+  if (!form) return;
+
+  document.querySelectorAll('.service-link').forEach((link) => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const offset = document.getElementById('header')?.offsetHeight || 72;
+      const top = form.getBoundingClientRect().top + window.scrollY - offset;
       window.scrollTo({ top, behavior: 'smooth' });
     });
   });

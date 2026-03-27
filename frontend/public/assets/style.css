@@ -2,12 +2,12 @@
 
 /* ---- Partner Logos Marquee ---- */
 .partner-logo-item {
-  width: 150px;
-  height: 90px;
+  width: 190px;
+  height: 112px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 20px;
+  padding: 12px 24px;
   flex-shrink: 0;
 }
 
@@ -293,7 +293,7 @@ body.light-mode #header.scrolled {
 }
 
 .nav-link {
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   font-weight: 500;
   letter-spacing: 0.02em;
   color: var(--text-secondary);
@@ -321,12 +321,12 @@ body.light-mode #header.scrolled {
 }
 
 .theme-toggle {
-  width: 38px; height: 38px;
+  width: 42px; height: 42px;
   border-radius: 50%;
   border: 1px solid var(--border);
   display: flex; align-items: center; justify-content: center;
   color: var(--text-secondary);
-  font-size: 0.9rem;
+  font-size: 1rem;
   transition: all var(--transition);
   background: var(--surface);
 }
@@ -338,10 +338,10 @@ body.light-mode #header.scrolled {
 }
 
 .btn-contact {
-  padding: 0.5rem 1.25rem;
+  padding: 0.58rem 1.35rem;
   border: 1px solid var(--border);
   border-radius: 6px;
-  font-size: 0.85rem;
+  font-size: 0.92rem;
   font-weight: 500;
   color: var(--text);
   transition: all var(--transition);
@@ -508,7 +508,8 @@ body.light-mode #header.scrolled {
   max-width: 1400px;
   width: 100%;
   margin: 0 auto;
-  padding-top: 4rem;
+  padding-top: 2.8rem;
+  opacity: 0;
 }
 
 .hero-overline {
@@ -525,8 +526,9 @@ body.light-mode #header.scrolled {
   font-family: var(--font-head);
   font-size: clamp(3rem, 8vw, 6.5rem);
   letter-spacing: -0.04em;
-  line-height: 1.0;
-  margin-bottom: 1.5rem;
+  line-height: 1.08;
+  margin-bottom: 1.7rem;
+  padding-bottom: 0.14em;
   overflow: hidden;
 }
 
@@ -1092,7 +1094,26 @@ body.light-mode #header.scrolled {
 .about-section { overflow: hidden; }
 
 .about-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 520px);
+  gap: 2rem;
+  align-items: center;
   margin-bottom: 4rem;
+}
+
+.about-photo-wrap {
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.25);
+}
+
+.about-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  min-height: 320px;
 }
 
 .about-text {
@@ -1207,7 +1228,7 @@ body.light-mode #header.scrolled {
   display: flex;
   gap: 1rem;
   width: max-content;
-  animation: marquee-scroll 25s linear infinite;
+  animation: marquee-scroll 42s linear infinite;
 }
 
 .marquee-reverse .marquee-track {
@@ -1583,12 +1604,12 @@ body.light-mode #header.scrolled {
 }
 
 .footer-social a {
-  width: 38px; height: 38px;
+  width: 46px; height: 46px;
   border: 1px solid var(--border);
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   color: var(--text-secondary);
-  font-size: 0.85rem;
+  font-size: 1.05rem;
   transition: all var(--transition);
 }
 
@@ -1697,13 +1718,13 @@ body.light-mode #header.scrolled {
 }
 
 .header-social-link {
-  width: 34px;
-  height: 34px;
+  width: 38px;
+  height: 38px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--text-secondary);
-  font-size: 1rem;
+  font-size: 1.1rem;
   border-radius: 50%;
   transition: color var(--transition);
   text-decoration: none;
@@ -1740,14 +1761,14 @@ body.light-mode #header.scrolled {
 .projects-h-wrap {
   display: flex;
   gap: 1.5rem;
-  padding: 2rem 5% 3rem;
+  padding: 2rem 0 3rem;
   width: max-content;
   margin-top: 1rem;
 }
 
 .projects-h-wrap .project-card {
-  width: 480px;
-  height: 370px;
+  width: min(78vw, 500px);
+  height: clamp(300px, 54vh, 380px);
   flex-shrink: 0;
   border-radius: var(--radius);
   overflow: hidden;
@@ -1758,7 +1779,17 @@ body.light-mode #header.scrolled {
   grid-row: unset !important;
 }
 
-.projects-h-wrap .project-h-wide { width: 620px; }
+.projects-h-wrap .project-h-wide { width: min(86vw, 640px); }
+
+.projects-h-wrap .project-img-wrap {
+  background: #050712;
+}
+
+.projects-h-wrap .project-img-wrap img {
+  object-fit: contain;
+  object-position: center;
+  padding: 0.5rem;
+}
 
 /* ---- Timeline: manual overflow scroll ---- */
 .timeline-container {
@@ -1792,18 +1823,20 @@ body.light-mode #header.scrolled {
 .logo { display: flex; align-items: center; }
 
 .header-logo-img {
-  height: 42px;
+  height: 46px;
   width: auto;
-  mix-blend-mode: screen;
-  filter: brightness(1.2) contrast(1.05);
-  transition: opacity var(--transition);
+  background: #fff;
+  padding: 0.35rem 0.7rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: opacity var(--transition), transform var(--transition);
 }
 
-.header-logo-img:hover { opacity: 0.85; }
+.header-logo-img:hover { opacity: 0.92; transform: translateY(-1px); }
 
 body.light-mode .header-logo-img {
-  mix-blend-mode: multiply;
-  filter: brightness(0.85) contrast(1.1);
+  background: #ffffff;
+  border-color: rgba(4, 10, 67, 0.15);
 }
 
 /* Hero Logo */
@@ -1815,13 +1848,15 @@ body.light-mode .header-logo-img {
 .hero-logo-img {
   height: 120px;
   width: auto;
-  mix-blend-mode: screen;
-  filter: brightness(1.25) contrast(1.1);
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 0.7rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
 }
 
 body.light-mode .hero-logo-img {
-  mix-blend-mode: multiply;
-  filter: brightness(0.8);
+  border-color: rgba(4, 10, 67, 0.15);
 }
 
 /* Preloader logo update */
@@ -1936,6 +1971,10 @@ body.light-mode .hero-logo-img {
 
 .form-field { position: relative; }
 
+#contact-form {
+  scroll-margin-top: calc(var(--header-h) + 12px);
+}
+
 .form-full { grid-column: 1 / -1; }
 
 .form-field input,
@@ -2047,13 +2086,14 @@ body.light-mode .hero-logo-img {
 .footer-logo-img {
   height: 90px;
   width: auto;
-  mix-blend-mode: screen;
-  filter: brightness(1.15);
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
+  border: 0;
 }
 
 body.light-mode .footer-logo-img {
-  mix-blend-mode: multiply;
-  filter: brightness(0.85);
+  border-color: transparent;
 }
 
 .footer-copy {
@@ -2093,6 +2133,7 @@ body.light-mode .footer-logo-img {
   .footer-top { grid-template-columns: 1fr; gap: 3rem; }
   .hero-stats { display: none; }
   .timeline-item { width: 280px; }
+  .about-intro { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 768px) {
