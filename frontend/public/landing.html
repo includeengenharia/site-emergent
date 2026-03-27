@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Include Engenharia — Engenharia digital de alta performance. Criamos experiências digitais extraordinárias que transformam negócios." />
+  <title>Include Engenharia | Engenharia Digital de Alta Performance</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+<script>try{localStorage.removeItem('include-theme');document.body.classList.remove('light-mode');}catch(e){}</script>
+
+  <!-- ==================== PRELOADER ==================== -->
+  <div id="preloader" data-testid="preloader">
+    <div class="preloader-inner">
+      <div class="preloader-logo">Include<span>.</span></div>
+      <div class="preloader-counter" id="preloader-counter">0</div>
+      <div class="preloader-percent">%</div>
+      <div class="preloader-bar-wrap">
+        <div class="preloader-bar" id="preloader-bar"></div>
+      </div>
+      <div class="preloader-label">Carregando experiência</div>
+    </div>
+  </div>
+
+  <!-- ==================== CUSTOM CURSOR ==================== -->
+  <div class="cursor-dot" id="cursor-dot"></div>
+  <div class="cursor-ring" id="cursor-ring" data-testid="custom-cursor"></div>
+
+  <!-- ==================== HEADER ==================== -->
+  <header id="header" data-testid="header">
+    <div class="nav-container">
+      <a href="#hero" class="logo" data-testid="logo">INCLUDE</a>
+
+      <nav class="main-nav" data-testid="main-nav">
+        <a href="#services" class="nav-link" data-testid="nav-services">Serviços</a>
+        <a href="#projects" class="nav-link" data-testid="nav-projects">Projetos</a>
+        <a href="#about" class="nav-link" data-testid="nav-about">Sobre</a>
+        <a href="#testimonials" class="nav-link" data-testid="nav-testimonials">Depoimentos</a>
+      </nav>
+
+      <div class="header-actions">
+        <div class="header-social-links">
+          <a href="https://www.instagram.com/engenhariainclude/" target="_blank" rel="noopener" class="header-social-link" data-testid="header-instagram" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://wa.me/5584920027644/" target="_blank" rel="noopener" class="header-social-link" data-testid="header-whatsapp" aria-label="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+          <a href="https://www.linkedin.com/company/engenhariainclude" target="_blank" rel="noopener" class="header-social-link" data-testid="header-linkedin" aria-label="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+        </div>
+        <button id="theme-toggle" class="theme-toggle" data-testid="theme-toggle" aria-label="Alternar tema">
+          <i class="fas fa-sun" id="theme-icon"></i>
+        </button>
+        <a href="#contact" class="btn-contact" data-testid="nav-contact">Contato</a>
+        <button class="menu-toggle" id="menu-toggle" data-testid="mobile-menu-toggle" aria-label="Abrir menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== MOBILE NAV ==================== -->
+  <div class="mobile-nav" id="mobile-nav" data-testid="mobile-nav">
+    <button class="mobile-nav-close" id="mobile-nav-close" data-testid="mobile-nav-close">
+      <i class="fas fa-times"></i>
+    </button>
+    <nav class="mobile-nav-links">
+      <a href="#services" class="mobile-nav-link" data-testid="mobile-nav-services">Serviços</a>
+      <a href="#projects" class="mobile-nav-link" data-testid="mobile-nav-projects">Projetos</a>
+      <a href="#about" class="mobile-nav-link" data-testid="mobile-nav-about">Sobre</a>
+      <a href="#testimonials" class="mobile-nav-link" data-testid="mobile-nav-testimonials">Depoimentos</a>
+      <a href="#contact" class="mobile-nav-link" data-testid="mobile-nav-contact">Contato</a>
+    </nav>
+    <div class="mobile-nav-footer">
+      <p>include@engenharia.com.br</p>
+      <div class="mobile-social">
+        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="mobile-overlay" id="mobile-overlay"></div>
+
+  <main>
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <section id="hero" data-testid="hero-section">
+      <canvas id="webgl-canvas" data-testid="webgl-canvas"></canvas>
+      <div class="hero-scanlines"></div>
+
+      <div class="hero-content">
+        <div class="hero-logo-wrap" data-testid="hero-logo">
+          <img
+            src="https://customer-assets.emergentagent.com/job_gsap-animation-lab-1/artifacts/ay3ma3ir_Logo_nova.png"
+            alt="Include Engenharia"
+            class="hero-logo-img"
+          />
+        </div>
+        <p class="hero-overline" data-testid="hero-overline">— Engenharia Digital de Alta Performance</p>
+        <h1 class="hero-title" id="hero-title" data-testid="hero-title">
+          <span class="hero-line" id="hero-line-1">Engenharia</span>
+          <span class="hero-line hero-line-accent" id="hero-line-2">Digital</span>
+          <span class="hero-line hero-line-thin" id="hero-line-3">Extraordinária</span>
+        </h1>
+        <p class="hero-subtitle" id="hero-subtitle" data-testid="hero-subtitle">
+          Transformamos ideias em sistemas, aplicativos e plataformas digitais de alto impacto. <br class="desktop-break" />
+          Código elegante, arquitetura robusta, resultados reais.
+        </p>
+        <div class="hero-cta" id="hero-cta">
+          <a href="#projects" class="btn-primary magnetic" data-testid="hero-cta-projects">
+            <span>Ver Projetos</span>
+            <i class="fas fa-arrow-right"></i>
+          </a>
+          <a href="#contact" class="btn-ghost magnetic" data-testid="hero-cta-contact">
+            <span>Falar Conosco</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-scroll" data-testid="hero-scroll">
+        <span class="hero-scroll-text">Scroll</span>
+        <div class="hero-scroll-line">
+          <div class="hero-scroll-dot"></div>
+        </div>
+      </div>
+
+      <div class="hero-stats" id="hero-stats" data-testid="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-number" data-count="50">0</span><span>+</span>
+          <span class="hero-stat-label">Projetos</span>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat">
+          <span class="hero-stat-number" data-count="40">0</span><span>+</span>
+          <span class="hero-stat-label">Clientes</span>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat">
+          <span class="hero-stat-number" data-count="10">0</span>
+          <span class="hero-stat-label">Anos</span>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat">
+          <span class="hero-stat-number" data-count="100">0</span><span>%</span>
+          <span class="hero-stat-label">Satisfação</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SERVICES SECTION ==================== -->
+    <section id="services" class="section" data-testid="services-section">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-overline" data-testid="services-overline">O que fazemos</p>
+          <h2 class="section-title" data-testid="services-title">
+            Soluções que <br /><em>transformam</em> negócios
+          </h2>
+          <p class="section-subtitle">Do frontend ao backend, do web ao mobile — entregamos engenharia de software com qualidade e performance em cada projeto.</p>
+        </div>
+
+        <div class="services-grid services-grid-3" data-testid="services-grid">
+          <div class="service-card service-card-lg" data-testid="service-card-1">
+            <div class="service-icon">
+              <i class="fas fa-globe"></i>
+            </div>
+            <h3>Desenvolvimento Web</h3>
+            <p>Sites institucionais, landing pages e aplicações web de alta performance construídas com as tecnologias mais modernas. Do conceito ao deploy com excelência técnica e visual.</p>
+            <div class="service-tags">
+              <span>React</span><span>Next.js</span><span>Node.js</span><span>TypeScript</span>
+            </div>
+            <a href="#contact" class="service-link">Solicitar orçamento <i class="fas fa-arrow-right"></i></a>
+          </div>
+
+          <div class="service-card service-card-lg" data-testid="service-card-2">
+            <div class="service-icon">
+              <i class="fas fa-mobile-screen-button"></i>
+            </div>
+            <h3>Apps Mobile</h3>
+            <p>Aplicativos nativos e multiplataforma para iOS e Android com UX refinada, performance nativa e integração completa com serviços, APIs e notificações em tempo real.</p>
+            <div class="service-tags">
+              <span>Flutter</span><span>React Native</span><span>Firebase</span><span>iOS/Android</span>
+            </div>
+            <a href="#contact" class="service-link">Solicitar orçamento <i class="fas fa-arrow-right"></i></a>
+          </div>
+
+          <div class="service-card service-card-lg" data-testid="service-card-3">
+            <div class="service-icon">
+              <i class="fas fa-server"></i>
+            </div>
+            <h3>Sistemas Web</h3>
+            <p>Plataformas SaaS, ERPs, CRMs e sistemas empresariais completos com backend robusto, APIs escaláveis, banco de dados otimizado e infraestrutura em nuvem segura.</p>
+            <div class="service-tags">
+              <span>Python</span><span>FastAPI</span><span>PostgreSQL</span><span>AWS</span>
+            </div>
+            <a href="#contact" class="service-link">Solicitar orçamento <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FEATURED WORK ==================== -->
+    <section id="projects" class="section projects-pinned" data-testid="projects-section">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-overline" data-testid="projects-overline">Portfólio</p>
+          <h2 class="section-title" data-testid="projects-title">
+            Projetos que <br /><em>fazem a diferença</em>
+          </h2>
+        </div>
+      </div>
+
+      <div class="projects-h-wrap" id="projects-scroll" data-testid="projects-grid">
+          <div class="project-card" data-testid="project-card-1"
+               data-title="Nexus E-commerce"
+               data-category="Plataforma de Vendas"
+               data-desc="Plataforma de e-commerce de alta performance com IA para recomendação de produtos, pagamentos integrados e painel de gestão em tempo real. Resultado: +340% em conversão."
+               data-tech="Next.js, Node.js, MongoDB, Stripe, TensorFlow"
+               data-img="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&auto=format&q=80">
+            <div class="project-img-wrap">
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&auto=format&q=80" alt="Nexus E-commerce" loading="lazy" />
+              <div class="project-overlay">
+                <span class="project-cat">E-commerce</span>
+                <h3>Nexus E-commerce</h3>
+                <p>Plataforma inteligente com IA</p>
+                <button class="project-btn" data-testid="project-open-1">Ver Projeto <i class="fas fa-expand"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card project-h-wide" data-testid="project-card-2"
+               data-title="FinFlow App"
+               data-category="Aplicativo Mobile"
+               data-desc="Aplicativo de gestão financeira pessoal com análise preditiva de gastos, metas automáticas e dashboards interativos. 50k+ usuários ativos."
+               data-tech="Flutter, Firebase, FastAPI, PostgreSQL"
+               data-img="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&auto=format&q=80">
+            <div class="project-img-wrap">
+              <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&auto=format&q=80" alt="FinFlow App" loading="lazy" />
+              <div class="project-overlay">
+                <span class="project-cat">Mobile App</span>
+                <h3>FinFlow App</h3>
+                <p>Gestão financeira inteligente</p>
+                <button class="project-btn" data-testid="project-open-2">Ver Projeto <i class="fas fa-expand"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card" data-testid="project-card-3"
+               data-title="DataPulse Dashboard"
+               data-category="Analytics & BI"
+               data-desc="Dashboard de analytics em tempo real com visualizações interativas, alertas inteligentes e integração com 20+ fontes de dados empresariais."
+               data-tech="React, D3.js, Python, Kafka, Redis"
+               data-img="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&q=80">
+            <div class="project-img-wrap">
+              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&q=80" alt="DataPulse Dashboard" loading="lazy" />
+              <div class="project-overlay">
+                <span class="project-cat">Dashboard</span>
+                <h3>DataPulse Dashboard</h3>
+                <p>Analytics em tempo real</p>
+                <button class="project-btn" data-testid="project-open-3">Ver Projeto <i class="fas fa-expand"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card project-h-wide" data-testid="project-card-4"
+               data-title="EduConnect Portal"
+               data-category="Plataforma Educacional"
+               data-desc="Portal educacional com streaming de aulas ao vivo, sistema de avaliações adaptativas e gamificação. 200+ instrutores, 10k+ alunos."
+               data-tech="Vue.js, Django, PostgreSQL, WebRTC"
+               data-img="https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=800&auto=format&q=80">
+            <div class="project-img-wrap">
+              <img src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=800&auto=format&q=80" alt="EduConnect Portal" loading="lazy" />
+              <div class="project-overlay">
+                <span class="project-cat">EdTech</span>
+                <h3>EduConnect Portal</h3>
+                <p>Plataforma de ensino online</p>
+                <button class="project-btn" data-testid="project-open-4">Ver Projeto <i class="fas fa-expand"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card" data-testid="project-card-5"
+               data-title="OmniERP Sistema"
+               data-category="Sistema Empresarial"
+               data-desc="Sistema ERP completo com módulos de estoque, financeiro, RH e CRM. Integração com marketplaces e automação fiscal. 30+ empresas utilizando."
+               data-tech="React, Node.js, Oracle, Docker, Kubernetes"
+               data-img="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1000&auto=format&q=80">
+            <div class="project-img-wrap">
+              <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1000&auto=format&q=80" alt="OmniERP" loading="lazy" />
+              <div class="project-overlay">
+                <span class="project-cat">ERP / SaaS</span>
+                <h3>OmniERP Sistema</h3>
+                <p>Gestão empresarial integrada</p>
+                <button class="project-btn" data-testid="project-open-5">Ver Projeto <i class="fas fa-expand"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card" data-testid="project-card-6"
+               data-title="APIForge Gateway"
+               data-category="Infraestrutura"
+               data-desc="Gateway de APIs com rate limiting, autenticação OAuth2, monitoramento e documentação automática. Processa 10M+ requisições/dia."
+               data-tech="Go, Redis, Nginx, Prometheus, Grafana"
+               data-img="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&auto=format&q=80">
+            <div class="project-img-wrap">
+              <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&auto=format&q=80" alt="APIForge" loading="lazy" />
+              <div class="project-overlay">
+                <span class="project-cat">Infraestrutura</span>
+                <h3>APIForge Gateway</h3>
+                <p>Gateway de microsserviços</p>
+                <button class="project-btn" data-testid="project-open-6">Ver Projeto <i class="fas fa-expand"></i></button>
+              </div>
+            </div>
+          </div>
+      </div>
+    </section>
+
+    <!-- ==================== LIGHTBOX MODAL ==================== -->
+    <div id="lightbox" class="lightbox" data-testid="lightbox" role="dialog" aria-modal="true">
+      <div class="lightbox-overlay" id="lightbox-overlay"></div>
+      <div class="lightbox-content">
+        <button class="lightbox-close" id="lightbox-close" data-testid="lightbox-close" aria-label="Fechar">
+          <i class="fas fa-times"></i>
+        </button>
+        <div class="lightbox-inner">
+          <div class="lightbox-img-wrap">
+            <img id="lightbox-img" src="" alt="" />
+          </div>
+          <div class="lightbox-info">
+            <span class="lightbox-cat" id="lightbox-cat"></span>
+            <h3 id="lightbox-title"></h3>
+            <p id="lightbox-desc"></p>
+            <div class="lightbox-tech" id="lightbox-tech"></div>
+            <a href="#footer" class="btn-primary" data-testid="lightbox-cta">
+              <span>Iniciar Projeto Similar</span>
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== ABOUT / TECH STACK ==================== -->
+    <section id="about" class="section about-section" data-testid="about-section">
+      <div class="about-intro container">
+        <div class="section-header">
+          <p class="section-overline">Nossa História</p>
+          <h2 class="section-title">
+            10 anos construindo <br /><em>o futuro digital</em>
+          </h2>
+          <p class="section-subtitle about-text">
+            Empresa júnior de Engenharia de Computação da <strong>UFRN</strong> — Universidade Federal do Rio Grande do Norte —, a Include Engenharia nasceu em Natal, RN, em 2015, com a missão de conectar o talento universitário ao mercado. Ao longo de uma década, formamos líderes, entregamos projetos de alto impacto e consolidamos nossa presença como referência em desenvolvimento digital no Nordeste.
+          </p>
+        </div>
+      </div>
+
+      <!-- Timeline Horizontal (pinned scroll) -->
+      <div class="timeline-container" id="timeline-container" data-testid="timeline-container">
+        <div class="timeline-track" id="timeline-track">
+          <div class="timeline-item" data-testid="timeline-item-1">
+            <div class="timeline-year">2015</div>
+            <div class="timeline-content">
+              <h3>Fundação</h3>
+              <p>Nascemos como empresa júnior de Engenharia de Computação da UFRN, em Natal/RN. Primeiros membros, muita energia e uma visão transformadora.</p>
+            </div>
+          </div>
+          <div class="timeline-item" data-testid="timeline-item-2">
+            <div class="timeline-year">2016</div>
+            <div class="timeline-content">
+              <h3>Primeiros Projetos</h3>
+              <p>Entregamos os primeiros projetos reais para clientes locais e construímos nossa metodologia de desenvolvimento ágil.</p>
+            </div>
+          </div>
+          <div class="timeline-item" data-testid="timeline-item-3">
+            <div class="timeline-year">2017</div>
+            <div class="timeline-content">
+              <h3>MEJ Nacional</h3>
+              <p>Engajamento no Movimento Empresa Júnior, conquistas em eventos nacionais e primeiras parcerias estratégicas no Rio Grande do Norte.</p>
+            </div>
+          </div>
+          <div class="timeline-item" data-testid="timeline-item-4">
+            <div class="timeline-year">2018</div>
+            <div class="timeline-content">
+              <h3>Expansão do Portfólio</h3>
+              <p>Novos serviços de desenvolvimento mobile e sistemas web com backend robusto. Crescimento expressivo do número de projetos entregues.</p>
+            </div>
+          </div>
+          <div class="timeline-item" data-testid="timeline-item-5">
+            <div class="timeline-year">2019</div>
+            <div class="timeline-content">
+              <h3>Presença Regional</h3>
+              <p>Ampliamos nossa atuação para outros estados do Nordeste e consolidamos nossa reputação como EJ de TI de referência no RN.</p>
+            </div>
+          </div>
+          <div class="timeline-item" data-testid="timeline-item-6">
+            <div class="timeline-year">2020</div>
+            <div class="timeline-content">
+              <h3>Resiliência Digital</h3>
+              <p>Adaptamos toda a operação ao trabalho remoto durante a pandemia, fortalecemos a equipe e mantivemos a qualidade das entregas.</p>
+            </div>
+          </div>
+          <div class="timeline-item" data-testid="timeline-item-7">
+            <div class="timeline-year">2021</div>
+            <div class="timeline-content">
+              <h3>Novas Tecnologias</h3>
+              <p>Adoção de stacks modernas, metodologias avançadas e entrega de projetos mais complexos com arquitetura escalável.</p>
+            </div>
+          </div>
+          <div class="timeline-item" data-testid="timeline-item-8">
+            <div class="timeline-year">2022</div>
+            <div class="timeline-content">
+              <h3>Marco de Impacto</h3>
+              <p>30+ projetos entregues com excelência. Reconhecidos como uma das principais EJs de TI do Nordeste brasileiro.</p>
+            </div>
+          </div>
+          <div class="timeline-item" data-testid="timeline-item-9">
+            <div class="timeline-year">2023</div>
+            <div class="timeline-content">
+              <h3>Nova Geração</h3>
+              <p>Nova geração de membros talentosos, parcerias inéditas e projetos de maior porte, complexidade e visibilidade nacional.</p>
+            </div>
+          </div>
+          <div class="timeline-item" data-testid="timeline-item-10">
+            <div class="timeline-year">2024</div>
+            <div class="timeline-content">
+              <h3>Excelência Nordestina</h3>
+              <p>Consolidação como referência em desenvolvimento digital no RN. Uma década de impacto real no mercado e na formação de engenheiros.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Parceiros Marquee -->
+      <div class="tech-marquee-section container">
+        <p class="section-overline" style="margin-bottom:2rem">Nossos Parceiros</p>
+        <div class="marquee-wrapper" data-testid="tech-marquee">
+          <div class="marquee-container">
+            <div class="marquee-track" id="marquee-track-1">
+              <div class="partner-logo-item"><img src="https://customer-assets.emergentagent.com/job_gsap-animation-lab-1/artifacts/l5eupr3t_59mil.png" alt="59Mil" class="partner-logo" /></div>
+              <div class="partner-logo-item"><img src="https://customer-assets.emergentagent.com/job_gsap-animation-lab-1/artifacts/gajlgwf0_acont.png" alt="Acont" class="partner-logo" /></div>
+              <div class="partner-logo-item"><img src="https://customer-assets.emergentagent.com/job_gsap-animation-lab-1/artifacts/e8bkqz24_bj.png" alt="Brasil Júnior" class="partner-logo" /></div>
+              <div class="partner-logo-item"><img src="https://customer-assets.emergentagent.com/job_gsap-animation-lab-1/artifacts/pn4vobks_consej.png" alt="Consej" class="partner-logo" /></div>
+              <div class="partner-logo-item"><img src="https://customer-assets.emergentagent.com/job_gsap-animation-lab-1/artifacts/wgtjfg2a_consolida.png" alt="Consolida Engenharia" class="partner-logo" /></div>
+              <div class="partner-logo-item"><img src="https://customer-assets.emergentagent.com/job_gsap-animation-lab-1/artifacts/be03ac1h_ejudi.png" alt="Ejudi" class="partner-logo" /></div>
+              <div class="partner-logo-item"><img src="https://customer-assets.emergentagent.com/job_gsap-animation-lab-1/artifacts/5u39y9yn_jk.png" alt="JK" class="partner-logo" /></div>
+              <div class="partner-logo-item"><img src="https://customer-assets.emergentagent.com/job_gsap-animation-lab-1/artifacts/24et0n4r_lugaresdecharme.svg" alt="Lugares de Charme" class="partner-logo" /></div>
+              <div class="partner-logo-item"><img src="https://customer-assets.emergentagent.com/job_gsap-animation-lab-1/artifacts/ix78zbci_proaqua.png" alt="Proaqua" class="partner-logo" /></div>
+              <div class="partner-logo-item"><img src="https://customer-assets.emergentagent.com/job_gsap-animation-lab-1/artifacts/94gmzqu1_rnjunior.png" alt="RN Júnior" class="partner-logo" /></div>
+              <!-- Duplicate for seamless loop -->
+              <div class="partner-logo-item"><img src="https://customer-assets.emergentagent.com/job_gsap-animation-lab-1/artifacts/l5eupr3t_59mil.png" alt="59Mil" class="partner-logo" /></div>
+              <div class="partner-logo-item"><img src="https://customer-assets.emergentagent.com/job_gsap-animation-lab-1/artifacts/gajlgwf0_acont.png" alt="Acont" class="partner-logo" /></div>
+              <div class="partner-logo-item"><img src="https://customer-assets.emergentagent.com/job_gsap-animation-lab-1/artifacts/e8bkqz24_bj.png" alt="Brasil Júnior" class="partner-logo" /></div>
+              <div class="partner-logo-item"><img src="https://customer-assets.emergentagent.com/job_gsap-animation-lab-1/artifacts/pn4vobks_consej.png" alt="Consej" class="partner-logo" /></div>
+              <div class="partner-logo-item"><img src="https://customer-assets.emergentagent.com/job_gsap-animation-lab-1/artifacts/wgtjfg2a_consolida.png" alt="Consolida Engenharia" class="partner-logo" /></div>
+              <div class="partner-logo-item"><img src="https://customer-assets.emergentagent.com/job_gsap-animation-lab-1/artifacts/be03ac1h_ejudi.png" alt="Ejudi" class="partner-logo" /></div>
+              <div class="partner-logo-item"><img src="https://customer-assets.emergentagent.com/job_gsap-animation-lab-1/artifacts/5u39y9yn_jk.png" alt="JK" class="partner-logo" /></div>
+              <div class="partner-logo-item"><img src="https://customer-assets.emergentagent.com/job_gsap-animation-lab-1/artifacts/24et0n4r_lugaresdecharme.svg" alt="Lugares de Charme" class="partner-logo" /></div>
+              <div class="partner-logo-item"><img src="https://customer-assets.emergentagent.com/job_gsap-animation-lab-1/artifacts/ix78zbci_proaqua.png" alt="Proaqua" class="partner-logo" /></div>
+              <div class="partner-logo-item"><img src="https://customer-assets.emergentagent.com/job_gsap-animation-lab-1/artifacts/94gmzqu1_rnjunior.png" alt="RN Júnior" class="partner-logo" /></div>
+            </div>
+          </div>
+          <div class="marquee-container marquee-reverse">
+            <div class="marquee-track" id="marquee-track-2">
+              <div class="partner-logo-item"><img src="https://customer-assets.emergentagent.com/job_gsap-animation-lab-1/artifacts/94gmzqu1_rnjunior.png" alt="RN Júnior" class="partner-logo" /></div>
+              <div class="partner-logo-item"><img src="https://customer-assets.emergentagent.com/job_gsap-animation-lab-1/artifacts/ix78zbci_proaqua.png" alt="Proaqua" class="partner-logo" /></div>
+              <div class="partner-logo-item"><img src="https://customer-assets.emergentagent.com/job_gsap-animation-lab-1/artifacts/24et0n4r_lugaresdecharme.svg" alt="Lugares de Charme" class="partner-logo" /></div>
+              <div class="partner-logo-item"><img src="https://customer-assets.emergentagent.com/job_gsap-animation-lab-1/artifacts/5u39y9yn_jk.png" alt="JK" class="partner-logo" /></div>
+              <div class="partner-logo-item"><img src="https://customer-assets.emergentagent.com/job_gsap-animation-lab-1/artifacts/be03ac1h_ejudi.png" alt="Ejudi" class="partner-logo" /></div>
+              <div class="partner-logo-item"><img src="https://customer-assets.emergentagent.com/job_gsap-animation-lab-1/artifacts/wgtjfg2a_consolida.png" alt="Consolida Engenharia" class="partner-logo" /></div>
+              <div class="partner-logo-item"><img src="https://customer-assets.emergentagent.com/job_gsap-animation-lab-1/artifacts/pn4vobks_consej.png" alt="Consej" class="partner-logo" /></div>
+              <div class="partner-logo-item"><img src="https://customer-assets.emergentagent.com/job_gsap-animation-lab-1/artifacts/e8bkqz24_bj.png" alt="Brasil Júnior" class="partner-logo" /></div>
+              <div class="partner-logo-item"><img src="https://customer-assets.emergentagent.com/job_gsap-animation-lab-1/artifacts/gajlgwf0_acont.png" alt="Acont" class="partner-logo" /></div>
+              <div class="partner-logo-item"><img src="https://customer-assets.emergentagent.com/job_gsap-animation-lab-1/artifacts/l5eupr3t_59mil.png" alt="59Mil" class="partner-logo" /></div>
+              <div class="partner-logo-item"><img src="https://customer-assets.emergentagent.com/job_gsap-animation-lab-1/artifacts/94gmzqu1_rnjunior.png" alt="RN Júnior" class="partner-logo" /></div>
+              <div class="partner-logo-item"><img src="https://customer-assets.emergentagent.com/job_gsap-animation-lab-1/artifacts/ix78zbci_proaqua.png" alt="Proaqua" class="partner-logo" /></div>
+              <div class="partner-logo-item"><img src="https://customer-assets.emergentagent.com/job_gsap-animation-lab-1/artifacts/24et0n4r_lugaresdecharme.svg" alt="Lugares de Charme" class="partner-logo" /></div>
+              <div class="partner-logo-item"><img src="https://customer-assets.emergentagent.com/job_gsap-animation-lab-1/artifacts/5u39y9yn_jk.png" alt="JK" class="partner-logo" /></div>
+              <div class="partner-logo-item"><img src="https://customer-assets.emergentagent.com/job_gsap-animation-lab-1/artifacts/be03ac1h_ejudi.png" alt="Ejudi" class="partner-logo" /></div>
+              <div class="partner-logo-item"><img src="https://customer-assets.emergentagent.com/job_gsap-animation-lab-1/artifacts/wgtjfg2a_consolida.png" alt="Consolida Engenharia" class="partner-logo" /></div>
+              <div class="partner-logo-item"><img src="https://customer-assets.emergentagent.com/job_gsap-animation-lab-1/artifacts/pn4vobks_consej.png" alt="Consej" class="partner-logo" /></div>
+              <div class="partner-logo-item"><img src="https://customer-assets.emergentagent.com/job_gsap-animation-lab-1/artifacts/e8bkqz24_bj.png" alt="Brasil Júnior" class="partner-logo" /></div>
+              <div class="partner-logo-item"><img src="https://customer-assets.emergentagent.com/job_gsap-animation-lab-1/artifacts/gajlgwf0_acont.png" alt="Acont" class="partner-logo" /></div>
+              <div class="partner-logo-item"><img src="https://customer-assets.emergentagent.com/job_gsap-animation-lab-1/artifacts/l5eupr3t_59mil.png" alt="59Mil" class="partner-logo" /></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TESTIMONIALS ==================== -->
+    <section id="testimonials" class="section" data-testid="testimonials-section">
+      <div class="container">
+        <div class="section-header testimonials-header">
+          <p class="section-overline">Depoimentos</p>
+          <h2 class="section-title">
+            O que nossos <br /><em>clientes dizem</em>
+          </h2>
+        </div>
+
+        <div class="testimonials-wrapper" data-testid="testimonials-wrapper">
+          <div class="testimonials-slider" id="testimonials-slider">
+            <div class="testimonial-card" data-testid="testimonial-card-1">
+              <div class="testimonial-inner">
+                <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
+                <p class="testimonial-text">"A Include Engenharia nos surpreendeu com a qualidade técnica e a dedicação da equipe. Entregaram um sistema robusto, moderno e dentro do prazo combinado. Resultado acima do esperado."</p>
+                <div class="testimonial-author">
+                  <div class="testimonial-avatar">59</div>
+                  <div>
+                    <strong>59Mil</strong>
+                    <span>Parceiro Estratégico</span>
+                  </div>
+                </div>
+                <div class="testimonial-stars">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card" data-testid="testimonial-card-2">
+              <div class="testimonial-inner">
+                <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
+                <p class="testimonial-text">"Equipe extremamente competente e proativa. Resolveram nossos desafios com agilidade e expertise técnica, superando todas as nossas expectativas em qualidade e prazo de entrega."</p>
+                <div class="testimonial-author">
+                  <div class="testimonial-avatar">AC</div>
+                  <div>
+                    <strong>Acont</strong>
+                    <span>Empresa Parceira</span>
+                  </div>
+                </div>
+                <div class="testimonial-stars">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card" data-testid="testimonial-card-3">
+              <div class="testimonial-inner">
+                <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
+                <p class="testimonial-text">"A Include Engenharia é referência de excelência no Movimento Empresa Júnior. Uma EJ que transforma desafios reais em soluções digitais de alto impacto e inspiração para todo o MEJ."</p>
+                <div class="testimonial-author">
+                  <div class="testimonial-avatar">BJ</div>
+                  <div>
+                    <strong>Brasil Júnior</strong>
+                    <span>Confederação Nacional de EJs</span>
+                  </div>
+                </div>
+                <div class="testimonial-stars">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card" data-testid="testimonial-card-4">
+              <div class="testimonial-inner">
+                <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
+                <p class="testimonial-text">"Parceria incrível! A Include entendeu nossas necessidades com precisão e entregou uma solução digital que modernizou completamente nossa operação. Resultados reais e mensuráveis."</p>
+                <div class="testimonial-author">
+                  <div class="testimonial-avatar">CJ</div>
+                  <div>
+                    <strong>Consej</strong>
+                    <span>Consultoria Jurídica Júnior</span>
+                  </div>
+                </div>
+                <div class="testimonial-stars">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card" data-testid="testimonial-card-5">
+              <div class="testimonial-inner">
+                <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
+                <p class="testimonial-text">"Profissionalismo, comprometimento e excelência técnica. A Include Engenharia é, sem dúvida, a melhor escolha para projetos de desenvolvimento digital no RN. Recomendamos fortemente."</p>
+                <div class="testimonial-author">
+                  <div class="testimonial-avatar">CE</div>
+                  <div>
+                    <strong>Consolida Engenharia</strong>
+                    <span>EJ de Engenharia Civil</span>
+                  </div>
+                </div>
+                <div class="testimonial-stars">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonials-controls" data-testid="testimonials-controls">
+            <button class="testimonial-btn" id="testimonial-prev" data-testid="testimonial-prev" aria-label="Anterior">
+              <i class="fas fa-arrow-left"></i>
+            </button>
+            <div class="testimonial-dots" id="testimonial-dots" data-testid="testimonial-dots">
+              <button class="dot active" data-index="0"></button>
+              <button class="dot" data-index="1"></button>
+              <button class="dot" data-index="2"></button>
+              <button class="dot" data-index="3"></button>
+              <button class="dot" data-index="4"></button>
+            </div>
+            <button class="testimonial-btn" id="testimonial-next" data-testid="testimonial-next" aria-label="Próximo">
+              <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CONTACT SECTION ==================== -->
+    <section id="contact" class="section contact-section" data-testid="contact-section">
+      <div class="container">
+        <div class="contact-grid">
+
+          <div class="contact-info" data-testid="contact-info">
+            <p class="section-overline">Entre em contato</p>
+            <h2 class="contact-title">Vamos construir<br /><em>algo juntos?</em></h2>
+            <p class="contact-desc">Preencha o formulário e nossa equipe entrará em contato em até 24 horas. Sem compromisso.</p>
+            <div class="contact-details">
+              <div class="contact-detail-item">
+                <i class="fas fa-envelope"></i>
+                <span>comercial@include.ct.ufrn.br</span>
+              </div>
+              <div class="contact-detail-item">
+                <i class="fas fa-phone"></i>
+                <span>(84) 92002-7644</span>
+              </div>
+              <div class="contact-detail-item">
+                <i class="fas fa-location-dot"></i>
+                <span>Natal, RN — Brasil</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-form-wrap" data-testid="contact-form-wrap">
+            <form id="contact-form" class="contact-form" data-testid="contact-form" onsubmit="handleContactForm(event)">
+              <div class="form-row">
+                <div class="form-field">
+                  <input type="text" id="contact-name" placeholder=" " required data-testid="contact-name" />
+                  <label for="contact-name">Nome completo *</label>
+                </div>
+                <div class="form-field">
+                  <input type="email" id="contact-email" placeholder=" " required data-testid="contact-email" />
+                  <label for="contact-email">E-mail *</label>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-field">
+                  <input type="tel" id="contact-phone" placeholder=" " data-testid="contact-phone" />
+                  <label for="contact-phone">Telefone</label>
+                </div>
+                <div class="form-field">
+                  <select id="contact-service" data-testid="contact-service">
+                    <option value="" disabled selected></option>
+                    <option value="web">Desenvolvimento Web</option>
+                    <option value="mobile">Apps Mobile</option>
+                    <option value="systems">Sistemas Web</option>
+                    <option value="other">Outro</option>
+                  </select>
+                  <label for="contact-service" class="select-label">Serviço de interesse</label>
+                </div>
+              </div>
+              <div class="form-field form-full">
+                <textarea id="contact-message" rows="5" placeholder=" " required data-testid="contact-message"></textarea>
+                <label for="contact-message">Sua mensagem *</label>
+              </div>
+              <button type="submit" class="btn-primary magnetic" data-testid="contact-submit">
+                <span>Enviar Mensagem</span>
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </form>
+            <div class="form-success" id="contact-success" data-testid="contact-success">
+              <i class="fas fa-check-circle"></i>
+              <p>Mensagem enviada com sucesso! Entraremos em contato em breve.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FOOTER MINIMAL ==================== -->
+    <footer id="footer" class="footer-minimal" data-testid="footer">
+      <div class="container">
+        <div class="footer-minimal-inner">
+          <img
+            src="https://customer-assets.emergentagent.com/job_gsap-animation-lab-1/artifacts/ay3ma3ir_Logo_nova.png"
+            alt="Include Engenharia"
+            class="footer-logo-img"
+            data-testid="footer-logo"
+          />
+          <p class="footer-copy">© <span id="footer-year"></span> Include Engenharia. Todos os direitos reservados.</p>
+          <div class="footer-social" data-testid="footer-social">
+            <a href="https://www.instagram.com/engenhariainclude/" target="_blank" rel="noopener" aria-label="Instagram" data-testid="social-instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/5584920027644/" target="_blank" rel="noopener" aria-label="WhatsApp" data-testid="social-whatsapp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.linkedin.com/company/engenhariainclude" target="_blank" rel="noopener" aria-label="LinkedIn" data-testid="social-linkedin"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- Back to top -->
+  <button id="back-to-top" class="back-to-top" data-testid="back-to-top" aria-label="Voltar ao topo">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- ==================== SCRIPTS ==================== -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="assets/script.js"></script>
+</body>
+</html>

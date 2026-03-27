@@ -1,0 +1,148 @@
+{
+  "theme_and_archetype": {
+    "domain": "Web Development / Software Engineering Agency",
+    "theme": "Dark (Primary) with Light Mode toggle",
+    "archetype": "Archetype 7 (Electric & Neon) mixed with Archetype 4 (Swiss Brutalist Structure)",
+    "emotion": "Cutting-edge, premium, technical authority, futuristic but structured"
+  },
+  "color_system": {
+    "dark_mode": {
+      "background": "#0A0A0A",
+      "surface": "#0F0F0F",
+      "border": "rgba(255, 255, 255, 0.1)",
+      "text_primary": "#FFFFFF",
+      "text_secondary": "#A1A1AA"
+    },
+    "light_mode": {
+      "background": "#F5F5F7",
+      "surface": "#FFFFFF",
+      "border": "rgba(10, 10, 10, 0.1)",
+      "text_primary": "#0A0A0A",
+      "text_secondary": "#52525B"
+    },
+    "brand_accents": {
+      "neon_cyan": "#00F5FF",
+      "neon_magenta": "#FF00E5",
+      "gradient": "linear-gradient(90deg, #00F5FF 0%, #FF00E5 100%)"
+    },
+    "rules": [
+      "No generic full-screen gradients. Neon is used strictly for accents, interactions, and WebGL particles.",
+      "Surfaces must have 1px solid subtle borders.",
+      "Light/Dark mode toggle must invert these CSS variables globally."
+    ]
+  },
+  "typography": {
+    "fonts": {
+      "headings": "'Poppins', sans-serif",
+      "body": "'Inter', sans-serif",
+      "mono": "'JetBrains Mono', monospace"
+    },
+    "scale": {
+      "h1_hero": "clamp(3rem, 8vw, 6rem)",
+      "h2_section": "clamp(2rem, 5vw, 4rem)",
+      "h3_card": "1.5rem",
+      "body": "1rem",
+      "small_label": "0.75rem"
+    },
+    "rules": [
+      "Headings (Poppins) must use tracking-tight (letter-spacing: -0.04em) and alternate between Light (300) and Black (900) weights for contrast.",
+      "Overlines/Labels must be uppercase, tiny, with wide spacing (letter-spacing: 0.2em).",
+      "Do NOT center align text unless explicitly inside the Hero or Footer. Left-align everything else."
+    ]
+  },
+  "layout_and_spacing": {
+    "philosophy": "Generous Spacing + Asymmetric Bento Grids",
+    "spacing_scale": {
+      "section_gap": "clamp(6rem, 15vh, 12rem)",
+      "element_gap": "2rem",
+      "container_padding": "5%"
+    },
+    "grid_modes": {
+      "projects": "Asymmetric bento grid. Mix row-span-2 and col-span-2. Never fill 100% perfectly, leave negative space.",
+      "services": "Strict 3-column grid on desktop, 1-column on mobile. Cards must stretch to same height."
+    }
+  },
+  "components_and_sections": {
+    "custom_cursor": {
+      "behavior": "Pure JS. Outer ring follows mouse with lerp (delay). Inner dot sticks to pointer exactly.",
+      "hover_state": "When hovering over <a> or <button>, the outer ring expands and turns neon magenta."
+    },
+    "preloader": {
+      "visuals": "Full screen black (#0A0A0A). Massive '0% - 100%' counter in neon cyan.",
+      "animation": "Counter ticks up via JS. Once 100% is reached, GSAP scales the preloader up and fades it out, triggering the Hero animations."
+    },
+    "header": {
+      "layout": "Fixed, glassmorphism backdrop-filter: blur(12px). Border-bottom 1px solid rgba(255,255,255,0.1).",
+      "elements": "Logo left, Nav links center, Light/Dark toggle + Contact button right."
+    },
+    "hero": {
+      "visuals": "Huge typography: 'INCLUDE / ENGENHARIA'.",
+      "webgl": "Three.js canvas positioned absolutely behind the text.",
+      "animation": "Vanilla JS text split into spans -> GSAP stagger text from Y: 100, opacity: 0."
+    },
+    "services": {
+      "layout": "Grid of cards with pure CSS 1px border. Background: surface color.",
+      "animation": "GSAP ScrollTrigger. Stagger cards in when scrolling into view.",
+      "hover": "Tracing beam effect or subtle box-shadow neon glow."
+    },
+    "projects": {
+      "layout": "Bento Grid of past works.",
+      "interaction": "Pure JS Lightbox. Clicking a project dims background and centers the image."
+    },
+    "about_tech": {
+      "timeline": "Horizontal scroll section pinned via ScrollTrigger (pin: true). User scrolls down, timeline moves left.",
+      "marquee": "Continuous CSS animation translation of tech icons/words (React, Node, Python, AWS)."
+    },
+    "testimonials": {
+      "layout": "3D-style horizontal slider.",
+      "behavior": "Active card is scale(1) opacity(1) z-index(10). Siblings are scale(0.85) opacity(0.5) shifted left/right."
+    },
+    "footer": {
+      "visuals": "Massive 'LET\\'S TALK' heading.",
+      "newsletter": "Input field with bottom border only. On focus, border transitions to neon cyan."
+    }
+  },
+  "animations_gsap_threejs": {
+    "gsap": {
+      "cdn": "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js",
+      "scrolltrigger_cdn": "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js",
+      "rules": "Register plugin first. Use gsap.utils.toArray for looping elements. Avoid GSAP premium plugins (no SplitText Club GreenSock; write a custom JS text splitter)."
+    },
+    "threejs": {
+      "cdn": "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js",
+      "implementation": "Use THREE.Points with THREE.BufferGeometry to create thousands of particles. Animate their Y position and rotation in requestAnimationFrame. Add a slight mouse parallax effect to the camera."
+    }
+  },
+  "images": {
+    "projects": [
+      {
+        "url": "https://images.unsplash.com/photo-1684127987312-43455fd95925?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODl8MHwxfHNlYXJjaHwxfHxsYXB0b3AlMjBkYXJrJTIwbW9kZXxlbnwwfHx8fDE3NzQ1NjM4MTB8MA&ixlib=rb-4.1.0&q=85",
+        "description": "Dark laptop showing web app - Use for Project 1"
+      },
+      {
+        "url": "https://images.pexels.com/photos/36136699/pexels-photo-36136699.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "description": "Dark smartphone app showcase - Use for Project 2"
+      }
+    ],
+    "abstract": [
+      {
+        "url": "https://images.pexels.com/photos/6940252/pexels-photo-6940252.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "description": "Neon abstract lighting - Use for About section or Lightbox filler"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1645295977630-0474a5d386cf?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA0MTJ8MHwxfHNlYXJjaHw0fHxjeWJlcnB1bmslMjBuZW9ufGVufDB8fHx8MTc3NDU2MzgwOXww&ixlib=rb-4.1.0&q=85",
+        "description": "Cyberpunk stage - Use for Team or Culture section"
+      }
+    ]
+  },
+  "instructions_to_main_agent": [
+    "Strictly use Pure HTML, CSS, and JS. Do NOT use React, Vue, or Tailwind. Build vanilla CSS variables for the color system.",
+    "Structure the project with index.html, styles.css, and script.js.",
+    "Load Google Fonts (Poppins, Inter), GSAP, ScrollTrigger, and Three.js via CDN.",
+    "Implement the Light/Dark mode toggle by toggling a '.light-mode' class on the body, overriding the CSS variables.",
+    "Since GSAP SplitText is a premium plugin, write a pure JS function to wrap each character/word of the hero heading in a <span>, then animate those spans with gsap.from(..., { stagger: 0.05 }).",
+    "Ensure the custom cursor has data-testid='custom-cursor' and elements use appropriate testing IDs.",
+    "For the WebGL background, initialize it inside a dedicated <canvas id='webgl-canvas'> behind the hero section. Ensure window resize events update the camera aspect ratio.",
+    "The timeline in 'Sobre / Tech Stack' MUST use ScrollTrigger with pin: true to create a horizontal scroll effect as the user scrolls down."
+  ]
+}
