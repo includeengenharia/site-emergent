@@ -5,6 +5,27 @@
 
 'use strict';
 
+function getHeaderOffset() {
+  return document.getElementById('header')?.offsetHeight || 72;
+}
+
+function getAnchorTop(target) {
+  if (!target) return 0;
+
+  const baseTop = target.getBoundingClientRect().top + window.scrollY;
+  const headerOffset = getHeaderOffset();
+  const navGap = 10;
+  let contentOffset = 0;
+
+  // For section anchors, align to the visible content start (after section top padding).
+  if (target.classList && target.classList.contains('section')) {
+    const styles = window.getComputedStyle(target);
+    contentOffset = parseFloat(styles.paddingTop) || 0;
+  }
+
+  return Math.max(0, baseTop + contentOffset - headerOffset - navGap);
+}
+
 /* ============================================================
    1. PRELOADER
    ============================================================ */
@@ -557,8 +578,7 @@ function initHeaderScroll() {
       const contact = document.getElementById('contact');
       if (!contact) return;
       setTimeout(() => {
-        const offset = document.getElementById('header')?.offsetHeight || 72;
-        const top = contact.getBoundingClientRect().top + window.scrollY - offset;
+        const top = getAnchorTop(contact);
         window.scrollTo({ top, behavior: 'smooth' });
       }, 120);
     });
@@ -817,8 +837,7 @@ function initBackToTop() {
       const target = document.querySelector(anchor.getAttribute('href'));
       if (!target) return;
       e.preventDefault();
-      const offset = document.getElementById('header')?.offsetHeight || 72;
-      const top    = target.getBoundingClientRect().top + window.scrollY - offset;
+      const top = getAnchorTop(target);
       window.scrollTo({ top, behavior: 'smooth' });
     });
   });
@@ -832,8 +851,7 @@ function initBackToTop() {
   document.querySelectorAll('.service-link').forEach((link) => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
-      const offset = document.getElementById('header')?.offsetHeight || 72;
-      const top = form.getBoundingClientRect().top + window.scrollY - offset;
+      const top = getAnchorTop(form);
       window.scrollTo({ top, behavior: 'smooth' });
     });
   });
