@@ -5,6 +5,27 @@
 
 'use strict';
 
+function getHeaderOffset() {
+  return document.getElementById('header')?.offsetHeight || 72;
+}
+
+function getAnchorTop(target) {
+  if (!target) return 0;
+
+  const baseTop = target.getBoundingClientRect().top + window.scrollY;
+  const headerOffset = getHeaderOffset();
+  const navGap = 10;
+  let contentOffset = 0;
+
+  // For section anchors, align to the visible content start (after section top padding).
+  if (target.classList && target.classList.contains('section')) {
+    const styles = window.getComputedStyle(target);
+    contentOffset = parseFloat(styles.paddingTop) || 0;
+  }
+
+  return Math.max(0, baseTop + contentOffset - headerOffset - navGap);
+}
+
 /* ============================================================
    1. PRELOADER
    ============================================================ */
@@ -193,7 +214,13 @@ function initMainAnimations() {
   // Init Three.js
   initThreeJS();
 
-  if (typeof gsap === 'undefined') return;
+  if (typeof gsap === 'undefined') {
+    const heroContent = document.querySelector('.hero-content');
+    if (heroContent) heroContent.style.opacity = '1';
+    return;
+  }
+
+  gsap.set('.hero-content', { opacity: 1 });
 
   // Register ScrollTrigger
   if (typeof ScrollTrigger !== 'undefined') {
@@ -341,21 +368,21 @@ function animateProjects() {
   });
 
   const scrollEl = document.getElementById('projects-scroll');
-  if (!scrollEl || window.innerWidth <= 768) return;
+  if (!scrollEl) return;
 
-  const getScrollDist = () => scrollEl.scrollWidth - window.innerWidth + 60;
+  const cards = scrollEl.querySelectorAll('.project-card');
+  if (!cards.length) return;
 
-  gsap.to(scrollEl, {
-    x: () => -getScrollDist(),
-    ease: 'none',
+  gsap.from(cards, {
+    y: 40,
+    opacity: 0,
+    duration: 0.7,
+    stagger: 0.12,
+    ease: 'power3.out',
     scrollTrigger: {
       trigger: '#projects',
-      start: 'top top',
-      end: () => `+=${getScrollDist()}`,
-      pin: true,
-      scrub: 1,
-      anticipatePin: 1,
-      invalidateOnRefresh: true
+      start: 'top 75%',
+      once: true
     }
   });
 }
@@ -493,19 +520,23 @@ function initHeaderScroll() {
   const cat      = document.getElementById('lightbox-cat');
   const desc     = document.getElementById('lightbox-desc');
   const tech     = document.getElementById('lightbox-tech');
+  const cta      = document.querySelector('[data-testid="lightbox-cta"]');
 
   if (!lightbox) return;
 
   const cards = document.querySelectorAll('.project-card');
   cards.forEach(card => {
     const btn = card.querySelector('.project-btn');
-    if (btn) {
+    if (btn && btn.tagName === 'BUTTON') {
       btn.addEventListener('click', (e) => {
         e.stopPropagation();
         openLightbox(card);
       });
     }
-    card.addEventListener('click', () => openLightbox(card));
+    card.addEventListener('click', (e) => {
+      if (e.target.closest('.project-btn-link')) return;
+      openLightbox(card);
+    });
   });
 
   function openLightbox(card) {
@@ -540,6 +571,18 @@ function initHeaderScroll() {
 
   if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
   if (overlay)  overlay.addEventListener('click',  closeLightbox);
+  if (cta) {
+    cta.addEventListener('click', (e) => {
+      e.preventDefault();
+      closeLightbox();
+      const contact = document.getElementById('contact');
+      if (!contact) return;
+      setTimeout(() => {
+        const top = getAnchorTop(contact);
+        window.scrollTo({ top, behavior: 'smooth' });
+      }, 120);
+    });
+  }
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 })();
 
@@ -667,26 +710,60 @@ function handleNewsletter(e) {
 /* ============================================================
    10b. CONTACT FORM
    ============================================================ */
-function handleContactForm(e) {
+async function handleContactForm(e) {
   e.preventDefault();
   const form    = document.getElementById('contact-form');
   const success = document.getElementById('contact-success');
   const btn     = e.target.querySelector('[data-testid="contact-submit"]');
+  const btnText = btn?.querySelector('span');
+
+  const payload = {
+    nome: document.getElementById('contact-name')?.value?.trim() || '',
+    nome_da_empresa: document.getElementById('contact-company')?.value?.trim() || '',
+    telefone: document.getElementById('contact-phone')?.value?.trim() || '',
+    o_que_voc_busca: document.getElementById('contact-message')?.value?.trim() || ''
+  };
+
+  if (!payload.nome || !payload.nome_da_empresa || !payload.telefone || !payload.o_que_voc_busca) {
+    alert('Preencha todos os campos obrigatórios.');
+    return;
+  }
+
+  const contactApiUrl =
+    (window.CONTACT_API_URL && String(window.CONTACT_API_URL).trim()) ||
+    ((window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+      ? 'http://localhost:8000/api/contact'
+      : '/api/contact');
 
   if (btn) {
     btn.disabled = true;
-    const span = btn.querySelector('span');
-    if (span) span.textContent = 'Enviando...';
+    if (btnText) btnText.textContent = 'Enviando...';
   }
 
-  // Simulate sending
-  setTimeout(() => {
+  try {
+    const response = await fetch(contactApiUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+
+    if (!response.ok) {
+      throw new Error('Falha ao enviar contato');
+    }
+
     if (form)    form.style.display    = 'none';
     if (success) success.classList.add('visible');
     if (typeof gsap !== 'undefined') {
       gsap.from(success, { opacity: 0, y: 20, duration: 0.5, ease: 'power3.out' });
     }
-  }, 900);
+  } catch (error) {
+    console.error('Erro ao enviar formulário:', error);
+    alert('Não foi possível enviar agora. Tente novamente em instantes.');
+    if (btn) {
+      btn.disabled = false;
+      if (btnText) btnText.textContent = 'Enviar Mensagem';
+    }
+  }
 }
 
 
@@ -760,8 +837,21 @@ function initBackToTop() {
       const target = document.querySelector(anchor.getAttribute('href'));
       if (!target) return;
       e.preventDefault();
-      const offset = document.getElementById('header')?.offsetHeight || 72;
-      const top    = target.getBoundingClientRect().top + window.scrollY - offset;
+      const top = getAnchorTop(target);
+      window.scrollTo({ top, behavior: 'smooth' });
+    });
+  });
+})();
+
+/* ---- Service CTA: always focus the contact form ---- */
+(function initServiceLinksToForm() {
+  const form = document.getElementById('contact-form');
+  if (!form) return;
+
+  document.querySelectorAll('.service-link').forEach((link) => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const top = getAnchorTop(form);
       window.scrollTo({ top, behavior: 'smooth' });
     });
   });

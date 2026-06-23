@@ -6,10 +6,10 @@
   <meta name="description" content="Include Engenharia — Engenharia digital de alta performance. Criamos experiências digitais extraordinárias que transformam negócios." />
   <title>Include Engenharia | Engenharia Digital de Alta Performance</title>
 
-  <!-- Google Fonts -->
+  <!-- External Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
@@ -29,7 +29,7 @@
       <div class="preloader-bar-wrap">
         <div class="preloader-bar" id="preloader-bar"></div>
       </div>
-      <div class="preloader-label">Carregando experiência</div>
+      <div class="preloader-label" aria-hidden="true"></div>
     </div>
   </div>
 
@@ -46,7 +46,7 @@
         <a href="#services" class="nav-link" data-testid="nav-services">Serviços</a>
         <a href="#projects" class="nav-link" data-testid="nav-projects">Projetos</a>
         <a href="#about" class="nav-link" data-testid="nav-about">Sobre</a>
-        <a href="#testimonials" class="nav-link" data-testid="nav-testimonials">Depoimentos</a>
+        <!-- <a href="#testimonials" class="nav-link" data-testid="nav-testimonials">Depoimentos</a> -->
       </nav>
 
       <div class="header-actions">
@@ -81,7 +81,7 @@
       <a href="#services" class="mobile-nav-link" data-testid="mobile-nav-services">Serviços</a>
       <a href="#projects" class="mobile-nav-link" data-testid="mobile-nav-projects">Projetos</a>
       <a href="#about" class="mobile-nav-link" data-testid="mobile-nav-about">Sobre</a>
-      <a href="#testimonials" class="mobile-nav-link" data-testid="mobile-nav-testimonials">Depoimentos</a>
+      <!-- <a href="#testimonials" class="mobile-nav-link" data-testid="mobile-nav-testimonials">Depoimentos</a> -->
       <a href="#contact" class="mobile-nav-link" data-testid="mobile-nav-contact">Contato</a>
     </nav>
     <div class="mobile-nav-footer">
@@ -112,9 +112,8 @@
         </div>
         <p class="hero-overline" data-testid="hero-overline">— Engenharia Digital de Alta Performance</p>
         <h1 class="hero-title" id="hero-title" data-testid="hero-title">
-          <span class="hero-line" id="hero-line-1">Engenharia</span>
-          <span class="hero-line hero-line-accent" id="hero-line-2">Digital</span>
-          <span class="hero-line hero-line-thin" id="hero-line-3">Extraordinária</span>
+          <span class="hero-line" id="hero-line-1">Include Engenharia</span>
+          <span class="hero-line hero-line-accent" id="hero-line-2">Soluções Digitais</span>
         </h1>
         <p class="hero-subtitle" id="hero-subtitle" data-testid="hero-subtitle">
           Transformamos ideias em sistemas, aplicativos e plataformas digitais de alto impacto. <br class="desktop-break" />
@@ -169,7 +168,6 @@
           <h2 class="section-title" data-testid="services-title">
             Soluções que <br /><em>transformam</em> negócios
           </h2>
-          <p class="section-subtitle">Do frontend ao backend, do web ao mobile — entregamos engenharia de software com qualidade e performance em cada projeto.</p>
         </div>
 
         <div class="services-grid services-grid-3" data-testid="services-grid">
@@ -182,7 +180,6 @@
             <div class="service-tags">
               <span>React</span><span>Next.js</span><span>Node.js</span><span>TypeScript</span>
             </div>
-            <a href="#contact" class="service-link">Solicitar orçamento <i class="fas fa-arrow-right"></i></a>
           </div>
 
           <div class="service-card service-card-lg" data-testid="service-card-2">
@@ -194,7 +191,6 @@
             <div class="service-tags">
               <span>Flutter</span><span>React Native</span><span>Firebase</span><span>iOS/Android</span>
             </div>
-            <a href="#contact" class="service-link">Solicitar orçamento <i class="fas fa-arrow-right"></i></a>
           </div>
 
           <div class="service-card service-card-lg" data-testid="service-card-3">
@@ -206,7 +202,6 @@
             <div class="service-tags">
               <span>Python</span><span>FastAPI</span><span>PostgreSQL</span><span>AWS</span>
             </div>
-            <a href="#contact" class="service-link">Solicitar orçamento <i class="fas fa-arrow-right"></i></a>
           </div>
         </div>
       </div>
@@ -225,104 +220,78 @@
 
       <div class="projects-h-wrap" id="projects-scroll" data-testid="projects-grid">
           <div class="project-card" data-testid="project-card-1"
-               data-title="Nexus E-commerce"
-               data-category="Plataforma de Vendas"
-               data-desc="Plataforma de e-commerce de alta performance com IA para recomendação de produtos, pagamentos integrados e painel de gestão em tempo real. Resultado: +340% em conversão."
-               data-tech="Next.js, Node.js, MongoDB, Stripe, TensorFlow"
-               data-img="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&auto=format&q=80">
+               data-title="Efice"
+               data-category="Consultoria e Gestão"
+               data-desc="Projeto institucional para a Efice com foco em posicionamento digital, conversão e clareza da proposta de valor. Entrega com landing page e módulo de sistema web administrativo."
+               data-tech="Landing Page, Sistema Web, UI/UX"
+               data-img="assets/images/projects/EficePrint.jpeg">
             <div class="project-img-wrap">
-              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&auto=format&q=80" alt="Nexus E-commerce" loading="lazy" />
+              <img src="assets/images/projects/EficePrint.jpeg" alt="Efice - Consultoria e Gestão" loading="lazy" />
               <div class="project-overlay">
-                <span class="project-cat">E-commerce</span>
-                <h3>Nexus E-commerce</h3>
-                <p>Plataforma inteligente com IA</p>
-                <button class="project-btn" data-testid="project-open-1">Ver Projeto <i class="fas fa-expand"></i></button>
+                <h3>Efice - Consultoria e Gestão</h3>
+                <p>Presença digital premium e gestão online</p>
+                <a class="project-btn project-btn-link" data-testid="project-open-1" href="https://eficeconsultoria.com.br/" target="_blank" rel="noopener">Veja o produto final <i class="fas fa-arrow-up-right-from-square"></i></a>
               </div>
+            </div>
+            <div class="project-type-below">
+              <span class="project-cat project-cat-below">Landing Page / Sistema Web</span>
             </div>
           </div>
 
           <div class="project-card project-h-wide" data-testid="project-card-2"
-               data-title="FinFlow App"
-               data-category="Aplicativo Mobile"
-               data-desc="Aplicativo de gestão financeira pessoal com análise preditiva de gastos, metas automáticas e dashboards interativos. 50k+ usuários ativos."
-               data-tech="Flutter, Firebase, FastAPI, PostgreSQL"
-               data-img="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&auto=format&q=80">
+               data-title="Lugares de Charme"
+               data-category="Landing Page"
+               data-desc="Landing page para a marca Lugares de Charme com foco em storytelling visual, autoridade e geração de leads para novos projetos."
+               data-tech="Landing Page, UX Writing, Branding Digital"
+               data-img="assets/images/projects/LugaresPrint.jpeg">
             <div class="project-img-wrap">
-              <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&auto=format&q=80" alt="FinFlow App" loading="lazy" />
+              <img src="assets/images/projects/LugaresPrint.jpeg" alt="Lugares de Charme" loading="lazy" />
               <div class="project-overlay">
-                <span class="project-cat">Mobile App</span>
-                <h3>FinFlow App</h3>
-                <p>Gestão financeira inteligente</p>
-                <button class="project-btn" data-testid="project-open-2">Ver Projeto <i class="fas fa-expand"></i></button>
+                <h3>Lugares de Charme</h3>
+                <p>Marca, impacto e narrativa visual</p>
+                <a class="project-btn project-btn-link" data-testid="project-open-2" href="https://lugaresdecharme.com.br/" target="_blank" rel="noopener">Veja o produto final <i class="fas fa-arrow-up-right-from-square"></i></a>
               </div>
+            </div>
+            <div class="project-type-below">
+              <span class="project-cat project-cat-below">Landing Page</span>
             </div>
           </div>
 
           <div class="project-card" data-testid="project-card-3"
-               data-title="DataPulse Dashboard"
-               data-category="Analytics & BI"
-               data-desc="Dashboard de analytics em tempo real com visualizações interativas, alertas inteligentes e integração com 20+ fontes de dados empresariais."
-               data-tech="React, D3.js, Python, Kafka, Redis"
-               data-img="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&q=80">
+               data-title="Iara Souza"
+               data-category="Landing Page"
+               data-desc="Página de apresentação profissional para psicologia clínica com foco em acolhimento, autoridade e agendamento de consultas."
+               data-tech="Landing Page, Conversão, Performance"
+               data-img="assets/images/projects/IaraPisco.png">
             <div class="project-img-wrap">
-              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&q=80" alt="DataPulse Dashboard" loading="lazy" />
+              <img src="assets/images/projects/IaraPisco.png" alt="Iara Souza" loading="lazy" />
               <div class="project-overlay">
-                <span class="project-cat">Dashboard</span>
-                <h3>DataPulse Dashboard</h3>
-                <p>Analytics em tempo real</p>
-                <button class="project-btn" data-testid="project-open-3">Ver Projeto <i class="fas fa-expand"></i></button>
+                <h3>Iara Souza</h3>
+                <p>Presença digital para atendimento clínico</p>
+                <a class="project-btn project-btn-link" data-testid="project-open-3" href="https://iarapsicologa.com/" target="_blank" rel="noopener">Veja o produto final <i class="fas fa-arrow-up-right-from-square"></i></a>
               </div>
+            </div>
+            <div class="project-type-below">
+              <span class="project-cat project-cat-below">Landing Page</span>
             </div>
           </div>
 
           <div class="project-card project-h-wide" data-testid="project-card-4"
-               data-title="EduConnect Portal"
-               data-category="Plataforma Educacional"
-               data-desc="Portal educacional com streaming de aulas ao vivo, sistema de avaliações adaptativas e gamificação. 200+ instrutores, 10k+ alunos."
-               data-tech="Vue.js, Django, PostgreSQL, WebRTC"
-               data-img="https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=800&auto=format&q=80">
+               data-title="Lunare"
+               data-category="Sistema de Gestão de Empresas"
+               data-desc="Plataforma de gestão empresarial com foco em controle operacional, produtividade e visão consolidada de dados para tomada de decisão."
+               data-tech="Sistema Web, Gestão Empresarial, Dashboard"
+               data-img="assets/images/projects/Lunare.png">
             <div class="project-img-wrap">
-              <img src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=800&auto=format&q=80" alt="EduConnect Portal" loading="lazy" />
+              <img src="assets/images/projects/Lunare.png" alt="Lunare" loading="lazy" />
               <div class="project-overlay">
-                <span class="project-cat">EdTech</span>
-                <h3>EduConnect Portal</h3>
-                <p>Plataforma de ensino online</p>
-                <button class="project-btn" data-testid="project-open-4">Ver Projeto <i class="fas fa-expand"></i></button>
+                <h3>Lunare</h3>
+                <p>Sistema de Gestão de Empresas</p>
+                <a class="project-btn project-btn-link" data-testid="project-open-4" href="https://lunaregestao.com.br/" target="_blank" rel="noopener">Veja o produto final <i class="fas fa-arrow-up-right-from-square"></i></a>
               </div>
             </div>
-          </div>
-
-          <div class="project-card" data-testid="project-card-5"
-               data-title="OmniERP Sistema"
-               data-category="Sistema Empresarial"
-               data-desc="Sistema ERP completo com módulos de estoque, financeiro, RH e CRM. Integração com marketplaces e automação fiscal. 30+ empresas utilizando."
-               data-tech="React, Node.js, Oracle, Docker, Kubernetes"
-               data-img="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1000&auto=format&q=80">
-            <div class="project-img-wrap">
-              <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1000&auto=format&q=80" alt="OmniERP" loading="lazy" />
-              <div class="project-overlay">
-                <span class="project-cat">ERP / SaaS</span>
-                <h3>OmniERP Sistema</h3>
-                <p>Gestão empresarial integrada</p>
-                <button class="project-btn" data-testid="project-open-5">Ver Projeto <i class="fas fa-expand"></i></button>
-              </div>
-            </div>
-          </div>
-
-          <div class="project-card" data-testid="project-card-6"
-               data-title="APIForge Gateway"
-               data-category="Infraestrutura"
-               data-desc="Gateway de APIs com rate limiting, autenticação OAuth2, monitoramento e documentação automática. Processa 10M+ requisições/dia."
-               data-tech="Go, Redis, Nginx, Prometheus, Grafana"
-               data-img="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&auto=format&q=80">
-            <div class="project-img-wrap">
-              <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&auto=format&q=80" alt="APIForge" loading="lazy" />
-              <div class="project-overlay">
-                <span class="project-cat">Infraestrutura</span>
-                <h3>APIForge Gateway</h3>
-                <p>Gateway de microsserviços</p>
-                <button class="project-btn" data-testid="project-open-6">Ver Projeto <i class="fas fa-expand"></i></button>
-              </div>
+            <div class="project-type-below">
+              <span class="project-cat project-cat-below">Sistema Web</span>
             </div>
           </div>
       </div>
@@ -344,7 +313,7 @@
             <h3 id="lightbox-title"></h3>
             <p id="lightbox-desc"></p>
             <div class="lightbox-tech" id="lightbox-tech"></div>
-            <a href="#footer" class="btn-primary" data-testid="lightbox-cta">
+            <a href="#contact" class="btn-primary" data-testid="lightbox-cta">
               <span>Iniciar Projeto Similar</span>
               <i class="fas fa-arrow-right"></i>
             </a>
@@ -362,8 +331,15 @@
             10 anos construindo <br /><em>o futuro digital</em>
           </h2>
           <p class="section-subtitle about-text">
-            Empresa júnior de Engenharia de Computação da <strong>UFRN</strong> — Universidade Federal do Rio Grande do Norte —, a Include Engenharia nasceu em Natal, RN, em 2015, com a missão de conectar o talento universitário ao mercado. Ao longo de uma década, formamos líderes, entregamos projetos de alto impacto e consolidamos nossa presença como referência em desenvolvimento digital no Nordeste.
+            Empresa júnior dos cursos de tecnologia da <strong>UFRN</strong> — Universidade Federal do Rio Grande do Norte —, a Include Engenharia nasceu em Natal, RN, em 2015, com a missão de conectar o talento universitário ao mercado. Ao longo de uma década, formamos líderes, entregamos projetos de alto impacto e consolidamos nossa presença como referência em desenvolvimento digital no Rio Grande do Norte.
           </p>
+        </div>
+        <div class="about-photo-wrap" data-testid="about-photo">
+          <div class="about-photo-slider">
+            <img src="assets/images/team/time1.jpg" alt="Equipe Include Engenharia - Time 1" class="about-photo about-photo-slide about-photo-slide-1" loading="lazy" />
+            <img src="assets/images/team/time2.jpg" alt="Equipe Include Engenharia - Time 2" class="about-photo about-photo-slide about-photo-slide-2" loading="lazy" />
+            <img src="assets/images/team/time3.jpg" alt="Equipe Include Engenharia - Time 3" class="about-photo about-photo-slide about-photo-slide-3" loading="lazy" />
+          </div>
         </div>
       </div>
 
@@ -374,70 +350,28 @@
             <div class="timeline-year">2015</div>
             <div class="timeline-content">
               <h3>Fundação</h3>
-              <p>Nascemos como empresa júnior de Engenharia de Computação da UFRN, em Natal/RN. Primeiros membros, muita energia e uma visão transformadora.</p>
+              <p>Início da Include Engenharia com foco em formar talentos e gerar impacto real por meio da tecnologia.</p>
             </div>
           </div>
           <div class="timeline-item" data-testid="timeline-item-2">
             <div class="timeline-year">2016</div>
             <div class="timeline-content">
-              <h3>Primeiros Projetos</h3>
-              <p>Entregamos os primeiros projetos reais para clientes locais e construímos nossa metodologia de desenvolvimento ágil.</p>
+              <h3>Federação</h3>
+              <p>Consolidação institucional com entrada na federação e fortalecimento da atuação no Movimento Empresa Júnior.</p>
             </div>
           </div>
           <div class="timeline-item" data-testid="timeline-item-3">
-            <div class="timeline-year">2017</div>
+            <div class="timeline-year">2024</div>
             <div class="timeline-content">
-              <h3>MEJ Nacional</h3>
-              <p>Engajamento no Movimento Empresa Júnior, conquistas em eventos nacionais e primeiras parcerias estratégicas no Rio Grande do Norte.</p>
+              <h3>Reestruturação da Empresa</h3>
+              <p>Reorganização estratégica de processos, produtos e cultura para elevar eficiência, previsibilidade e qualidade de entrega.</p>
             </div>
           </div>
           <div class="timeline-item" data-testid="timeline-item-4">
-            <div class="timeline-year">2018</div>
+            <div class="timeline-year">2025</div>
             <div class="timeline-content">
-              <h3>Expansão do Portfólio</h3>
-              <p>Novos serviços de desenvolvimento mobile e sistemas web com backend robusto. Crescimento expressivo do número de projetos entregues.</p>
-            </div>
-          </div>
-          <div class="timeline-item" data-testid="timeline-item-5">
-            <div class="timeline-year">2019</div>
-            <div class="timeline-content">
-              <h3>Presença Regional</h3>
-              <p>Ampliamos nossa atuação para outros estados do Nordeste e consolidamos nossa reputação como EJ de TI de referência no RN.</p>
-            </div>
-          </div>
-          <div class="timeline-item" data-testid="timeline-item-6">
-            <div class="timeline-year">2020</div>
-            <div class="timeline-content">
-              <h3>Resiliência Digital</h3>
-              <p>Adaptamos toda a operação ao trabalho remoto durante a pandemia, fortalecemos a equipe e mantivemos a qualidade das entregas.</p>
-            </div>
-          </div>
-          <div class="timeline-item" data-testid="timeline-item-7">
-            <div class="timeline-year">2021</div>
-            <div class="timeline-content">
-              <h3>Novas Tecnologias</h3>
-              <p>Adoção de stacks modernas, metodologias avançadas e entrega de projetos mais complexos com arquitetura escalável.</p>
-            </div>
-          </div>
-          <div class="timeline-item" data-testid="timeline-item-8">
-            <div class="timeline-year">2022</div>
-            <div class="timeline-content">
-              <h3>Marco de Impacto</h3>
-              <p>30+ projetos entregues com excelência. Reconhecidos como uma das principais EJs de TI do Nordeste brasileiro.</p>
-            </div>
-          </div>
-          <div class="timeline-item" data-testid="timeline-item-9">
-            <div class="timeline-year">2023</div>
-            <div class="timeline-content">
-              <h3>Nova Geração</h3>
-              <p>Nova geração de membros talentosos, parcerias inéditas e projetos de maior porte, complexidade e visibilidade nacional.</p>
-            </div>
-          </div>
-          <div class="timeline-item" data-testid="timeline-item-10">
-            <div class="timeline-year">2024</div>
-            <div class="timeline-content">
-              <h3>Excelência Nordestina</h3>
-              <p>Consolidação como referência em desenvolvimento digital no RN. Uma década de impacto real no mercado e na formação de engenheiros.</p>
+              <h3>Subida de Cluster e Resultados Incríveis</h3>
+              <p>Escalada de performance com ganhos expressivos em resultados, visibilidade e maturidade operacional da Include.</p>
             </div>
           </div>
         </div>
@@ -501,6 +435,7 @@
     </section>
 
     <!-- ==================== TESTIMONIALS ==================== -->
+    <!-- Desabilitado temporariamente
     <section id="testimonials" class="section" data-testid="testimonials-section">
       <div class="container">
         <div class="section-header testimonials-header">
@@ -616,6 +551,7 @@
         </div>
       </div>
     </section>
+    -->
 
     <!-- ==================== CONTACT SECTION ==================== -->
     <section id="contact" class="section contact-section" data-testid="contact-section">
@@ -625,7 +561,6 @@
           <div class="contact-info" data-testid="contact-info">
             <p class="section-overline">Entre em contato</p>
             <h2 class="contact-title">Vamos construir<br /><em>algo juntos?</em></h2>
-            <p class="contact-desc">Preencha o formulário e nossa equipe entrará em contato em até 24 horas. Sem compromisso.</p>
             <div class="contact-details">
               <div class="contact-detail-item">
                 <i class="fas fa-envelope"></i>
@@ -650,29 +585,19 @@
                   <label for="contact-name">Nome completo *</label>
                 </div>
                 <div class="form-field">
-                  <input type="email" id="contact-email" placeholder=" " required data-testid="contact-email" />
-                  <label for="contact-email">E-mail *</label>
+                  <input type="text" id="contact-company" placeholder=" " required data-testid="contact-company" />
+                  <label for="contact-company">Nome da empresa *</label>
                 </div>
               </div>
               <div class="form-row">
                 <div class="form-field">
-                  <input type="tel" id="contact-phone" placeholder=" " data-testid="contact-phone" />
-                  <label for="contact-phone">Telefone</label>
-                </div>
-                <div class="form-field">
-                  <select id="contact-service" data-testid="contact-service">
-                    <option value="" disabled selected></option>
-                    <option value="web">Desenvolvimento Web</option>
-                    <option value="mobile">Apps Mobile</option>
-                    <option value="systems">Sistemas Web</option>
-                    <option value="other">Outro</option>
-                  </select>
-                  <label for="contact-service" class="select-label">Serviço de interesse</label>
+                  <input type="tel" id="contact-phone" placeholder=" " required data-testid="contact-phone" />
+                  <label for="contact-phone">Telefone *</label>
                 </div>
               </div>
               <div class="form-field form-full">
                 <textarea id="contact-message" rows="5" placeholder=" " required data-testid="contact-message"></textarea>
-                <label for="contact-message">Sua mensagem *</label>
+                <label for="contact-message">O que você busca? *</label>
               </div>
               <button type="submit" class="btn-primary magnetic" data-testid="contact-submit">
                 <span>Enviar Mensagem</span>
@@ -694,7 +619,7 @@
       <div class="container">
         <div class="footer-minimal-inner">
           <img
-            src="https://customer-assets.emergentagent.com/job_gsap-animation-lab-1/artifacts/ay3ma3ir_Logo_nova.png"
+            src="assets/images/logos/LogoBranca.png"
             alt="Include Engenharia"
             class="footer-logo-img"
             data-testid="footer-logo"
