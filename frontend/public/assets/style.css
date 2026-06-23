@@ -1,5 +1,31 @@
 /* ============================================================
 
+/* ---- Custom Fonts ---- */
+@font-face {
+  font-family: 'Pattanakarn';
+  src: url('../Tipografia/Pattanakarn/pattanakarn/fonnts.com-Pattanakarn_Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Pattanakarn';
+  src: url('../Tipografia/Pattanakarn/pattanakarn/fonnts.com-Pattanakarn_Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Pattanakarn';
+  src: url('../Tipografia/Pattanakarn/pattanakarn/fonnts.com-Pattanakarn_Bold_Italic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: auto;
+}
+@font-face {
+  font-family: 'Pattanakarn';
+  src: url('../Tipografia/Pattanakarn/pattanakarn/fonnts.com-Pattanakarn_ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+}
+
 /* ---- Partner Logos Marquee ---- */
 .partner-logo-item {
   width: 190px;
@@ -73,8 +99,8 @@ body.light-mode .testimonial-logo-img {
   --brand-blue-light: #3F80EF;
   --gradient: linear-gradient(90deg, #FFC209 0%, #3F80EF 100%);
   --gradient-diag: linear-gradient(135deg, #FFC209 0%, #3F80EF 100%);
-  --font-head: 'Space Grotesk', 'Poppins', sans-serif;
-  --font-body: 'Inter', sans-serif;
+  --font-head: 'Pattanakarn', 'Poppins', sans-serif;
+  --font-body: 'Poppins', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
   --radius: 12px;
   --header-h: 72px;
